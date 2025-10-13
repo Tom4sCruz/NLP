@@ -1,0 +1,88 @@
+\documentclass[twocolumn,10pt]{article}
+
+\usepackage{authblk}
+\usepackage{bera}
+\usepackage[utf8]{inputenc}
+
+% TITLE
+\title{Title}
+
+
+% AUTHORS
+\author{Author 1}
+\author{Author 2}
+\author{Author 3}
+\affil{Group XXX\\ Instituto Superior Técnico, Universidade de Lisboa}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\section{Models}
+
+\section{Experimental Setup}
+ 
+\subsection{Datasets}
+
+\subsection{Metrics}
+
+\subsection{Parameters/Hyperparamenters}
+
+\section{Results}
+
+\section{Discussion} 
+
+\section{Future Work}
+
+\section*{Bibliography}
+
+\bibliographystyle{apalike}
+\bibliography{biblio}
+Bibliography does not count for the two pages limit.
+
+% One page at most. Only the first two pages of the paper will be read. The appendix should only contain complementary information.
+
+\appendix
+
+\section*{Appendix A: Extra Figures and Tables}
+
+Maximum one page: just extra figures and tables. We should be able to understand the paper without these figures and tables.
+
+\section{Evaluation and tips (remove this section before submission)}
+
+ \begin{itemize}
+ \item{How the project will be evaluated}
+\begin{itemize}
+\item (1.5) General quality of the paper: correct syntax, clearness, zero typos, illustrative examples, pictures and figures, etc.
+\item (1.5) Replicability: if we wanted to replicate your results, just by reading the paper, would we be able to do it?
+\item (2.0) Correction: are the proposed methods sound?
+\item (2.0) The creativity of your approach (you just limited yourself to run a code you found somewhere or you tried different approaches?)
+\item Scores by section:
+\begin{itemize}
+\item (1.0) Section Introduction: provide a clear description of the dimension of the problem you will work on, that is, explain the challenge and identify the problem your group will tackle (from now on, dimension), for instance, a problem with the dataset, compare classic MT with Deep Learning, efficient fine-tuning, etc..
+\item (2.0) Section Models: provide a clear description of your models and techniques, as for instance, pre-processings, data-augmentation, etc.), considering the dimension you have identified previously.
+\item (1.0) Experimental Setup: provide clear information regarding the used datasets, splits, evaluation metrics used and hyperparameters (if applicable).
+\item (1.0) Results: provide the results of your best models, and also results by label of your best model. You should also present a comprehensive confusion matrix of one of your models (probably the best one). As previously said, the expected labels of the given test set are not provided, so you should create your own test(s) set(s) from the training set and report the results on your own test(s) set(s). The given test set (test\_no\_labels.txt) should ****only**** be used to generate the file results.txt. By the way: do not compare models if you are using a different train/test split.
+\item (3.5) Discussion: show us that you have properly analysed the dataset and the obtained outputs (not just by looking at statistics or confusion matrices. Try to explain the most common errors (examples are mandatory). Explain how results align with the dimension you have identified in the introduction.
+\item (0.5) Future Work: If more time was given to you, explain what you would do to improve your system, considering the dimension you identified in the introduction.
+\end{itemize}
+\end{itemize}
+\item Tips:
+\begin{itemize}
+\item Label figures and tables.
+\item Use the correct quotation marks in Latex (``bla-bla'').
+\item If you use a figure or table, refer to it.
+\item If you say things such as ``The dataset is unbalanced'', explain why (facts).
+\item Use formal English (so, no ``it's'', ``they're'', etc.).
+\item If you mention a hyperparameter, explain it (briefly).
+\item If you use an acronym, use it consistently (check how to do it in latex).
+\item Use label that are easy to be read in the Confusion Matrix.
+\item Cite your sources (papers) or add footnotes with URLs for computational resources.
+\item Do not use adjectives (ex: amazing work, nice concept, ...). They are subjective and this is science.
+\end{itemize}
+\end{itemize}
+ 
+
+\end{document}

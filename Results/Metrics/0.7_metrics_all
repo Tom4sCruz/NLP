@@ -1,0 +1,60 @@
+[+] Running RNN with HIDDEN_DIM=128 | EPOCHS=30 | MAX_LEN=100 | SPLIT_RATIO=0.7
+🎯 Accuracy: 0.6311
+📊 F1-score (macro): 0.6161
+📊 F1-score (weighted): 0.6281
+
+🧩 Confusion Matrix (rows=actual, cols=predicted):
+      1533  3288  4470  5060  6357  8688
+1533    60     4    22     2     4    18
+3288    13    61    30     8     6    12
+4470    12    19   159    18    14    13
+5060     1     4    16   141     3     0
+6357     9    17    25     3    64     7
+8688    16     6    18     1    11    83
+
+📋 Classification Report:
+              precision    recall  f1-score   support
+
+        1533     0.5405    0.5455    0.5430       110
+        3288     0.5495    0.4692    0.5062       130
+        4470     0.5889    0.6766    0.6297       235
+        5060     0.8150    0.8545    0.8343       165
+        6357     0.6275    0.5120    0.5639       125
+        8688     0.6241    0.6148    0.6194       135
+
+    accuracy                         0.6311       900
+   macro avg     0.6243    0.6121    0.6161       900
+weighted avg     0.6294    0.6311    0.6281       900
+
+[+] Finished run: H=128 | E=30 | L=100 | SPLIT_RATIO=0.7
+--------------------------------------------
+
+../Datasets/Splits/training_set_0.7.csv | ../Datasets/Splits/testing_set_0.7_no_chef_id.csv | SPLIT_RATIO=0.7
+🎯 Accuracy: 0.9367
+📊 F1-score (macro): 0.9283
+📊 F1-score (weighted): 0.9365
+
+🧩 Confusion Matrix (rows=actual, cols=predicted):
+      1533  3288  4470  5060  6357  8688
+1533    92     7     3     1     1     6
+3288     6   115     3     0     0     6
+4470     1     2   231     0     0     1
+5060     0     1     0   163     0     1
+6357     1     0     6     0   115     3
+8688     4     4     0     0     0   127
+
+📋 Classification Report:
+              precision    recall  f1-score   support
+
+        1533     0.8846    0.8364    0.8598       110
+        3288     0.8915    0.8846    0.8880       130
+        4470     0.9506    0.9830    0.9665       235
+        5060     0.9939    0.9879    0.9909       165
+        6357     0.9914    0.9200    0.9544       125
+        8688     0.8819    0.9407    0.9104       135
+
+    accuracy                         0.9367       900
+   macro avg     0.9323    0.9254    0.9283       900
+weighted avg     0.9373    0.9367    0.9365       900
+
+[✅] All experiments completed!
