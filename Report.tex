@@ -1,0 +1,63 @@
+\documentclass[twocolumn,10pt]{article}
+
+\usepackage{authblk}
+\usepackage{bera}
+\usepackage[utf8]{inputenc}
+
+% TITLE
+\title{Chef Classification Task - NLP Project}
+
+
+% AUTHORS
+\author{João Lopes}
+\author{Kun Fang}
+\author{Tomás Henriques}
+\author{Tomás Cruz}
+\affil{Group 64\\ Instituto Superior Técnico, Universidade de Lisboa}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+The problem at hand is a classification task. With this specific task, we want to label various recipes for six different chefs. We are given the recipe name, date, tags, steps, description, ingredients, and the number of ingredients. From that data, we need to be able to determine which recipes belong to whom.
+
+
+\section{Models}
+We experimented with a considerable number of models. We tested using Logistic Regressions, RNNs and linear SVC. We did pre-processing in every model: for Logistic Regressions and linear SVC, we lowercased and tokenized every word, concatenate all fields, with the exception of chef\_id, used tf-idf n-grams (unigrams + bigrams) and removed stopwords; and for RNNs, we limited ourselves to concatenate all fields, with the exception chef\_id, again, lowercase and tokenize the words. We applied minimal pre-processing to the RNN model, since RNNs learn based on the structure and order. By removing stopwords, punctuation, etc. we are removing useful context from which it could learn. Neither Logistic Regressions nor Linear SCV have this problem, given that they sequences as bag of words, where frequency is more important than its place in a sequence.
+
+
+\section{Experimental Setup}
+ 
+\subsection{Datasets}
+To test our models, we used the train.csv provided and used split ratios of 0.7, 0.8, 0.9 and, more radical, 0.5 (here, when we say we used a split ratio of 0.7, we mean that 70\% was used for the training set and 30\% for testing). It's also important to mention that every time we split the original train.csv with a certain split ratio, we would shuffle it as to avoid having the same training and testing sets with the same split ratio as previous ones.
+\subsection{Metrics}
+We mainly focused on using Accuracy and F1-score as metrics for the performance of our models. Accuracy was used as a quick check between models and F1-score was used as it proves better in situations where the dataset is imbalanced as is the case (The distribution of the original train.csv, across the six different cehfs, is [PERCENTAGES]) [DON'T FORGET TO TRY CONFUSION MATRIX!!!!!]
+\subsection{Parameters/Hyperparameters}
+Between Logistic Regressions and Linear SCV, the latter was proving to be better, so Logistic Regressions were discarded early on. With that said, for Linear SCV, we run a GridSearchCV on a subset of the training set to determine the best parameters, based on limits we established. The result was: 'clf\_\_C': 2.0, 'tfidf\_\_max\_df': 1.0, 'tfidf\_\_min\_df': 2 and 'tfidf\_\_ngram\_range': (1, 2). For our RNN model, we tested various parameters, but the ones that yielded the best results were 'hidden\_dim': 128, 'embeds\_dim': 128, 'dropout': 0.3, 'training\_epochs': 30 and 'MAX\_LEN': 100 (it is important to note that MAX\_LEN corresponds to the maximum sequence length, i.e. the maximum number of tokens per text sample -- if a sequence is longer than MAX\_LEN, it gets truncated and if it is shorter, the text gets padded with zeros).
+
+
+\section{Results}
+Taking the models with the hyperparameters aforementioned, and using our training and testing sets from the original train.csv, with a split\_ratio=0.8, We obtained [mention ACCURACY, F1-SCORE]. [append CONFUSION\_MATRIX for BEST model, linearSCV].
+
+\section{Discussion} 
+
+\section{Future Work}
+
+\section*{Bibliography}
+
+\bibliographystyle{apalike}
+\bibliography{biblio}
+Bibliography does not count for the two pages limit.
+
+% One page at most. Only the first two pages of the paper will be read. The appendix should only contain complementary information.
+
+\appendix
+
+\section*{Appendix A: Extra Figures and Tables}
+
+Maximum one page: just extra figures and tables. We should be able to understand the paper without these figures and tables.
+
+ 
+
+\end{document}
