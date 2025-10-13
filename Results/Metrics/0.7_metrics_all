@@ -29,6 +29,7 @@ weighted avg     0.6294    0.6311    0.6281       900
 [+] Finished run: H=128 | E=30 | L=100 | SPLIT_RATIO=0.7
 --------------------------------------------
 
+[+] LinearSVC
 ../Datasets/Splits/training_set_0.7.csv | ../Datasets/Splits/testing_set_0.7_no_chef_id.csv | SPLIT_RATIO=0.7
 🎯 Accuracy: 0.9367
 📊 F1-score (macro): 0.9283
