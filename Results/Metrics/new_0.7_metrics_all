@@ -1,0 +1,94 @@
+[+] Running RNN with HIDDEN_DIM=128 | EPOCHS=30 | MAX_LEN=100 | SPLIT_RATIO=0.7
+Loading data...
+Vocab size: 7909, #classes: 6
+Epoch 1 | train_loss: 1.7855 | val_loss: 1.7713 | val_acc: 0.2048 | time: 5.6s
+Epoch 2 | train_loss: 1.7589 | val_loss: 1.7306 | val_acc: 0.2643 | time: 6.1s
+Epoch 3 | train_loss: 1.7043 | val_loss: 1.6549 | val_acc: 0.3167 | time: 6.7s
+Epoch 4 | train_loss: 1.6015 | val_loss: 1.4616 | val_acc: 0.4881 | time: 6.4s
+Epoch 5 | train_loss: 1.2883 | val_loss: 1.1591 | val_acc: 0.5619 | time: 6.9s
+Epoch 6 | train_loss: 1.0802 | val_loss: 1.0616 | val_acc: 0.6190 | time: 7.4s
+Epoch 7 | train_loss: 0.9889 | val_loss: 0.9980 | val_acc: 0.6214 | time: 6.7s
+Epoch 8 | train_loss: 0.9240 | val_loss: 0.9669 | val_acc: 0.6500 | time: 7.1s
+Epoch 9 | train_loss: 0.8686 | val_loss: 0.8825 | val_acc: 0.6929 | time: 7.3s
+Epoch 10 | train_loss: 0.8086 | val_loss: 0.8517 | val_acc: 0.7333 | time: 6.9s
+Epoch 11 | train_loss: 0.7578 | val_loss: 0.8338 | val_acc: 0.7286 | time: 6.6s
+Epoch 12 | train_loss: 0.7105 | val_loss: 0.8120 | val_acc: 0.7333 | time: 6.6s
+Epoch 13 | train_loss: 0.6702 | val_loss: 0.7700 | val_acc: 0.7452 | time: 6.6s
+Epoch 14 | train_loss: 0.6253 | val_loss: 0.7808 | val_acc: 0.7476 | time: 6.7s
+Epoch 15 | train_loss: 0.5998 | val_loss: 0.7486 | val_acc: 0.7548 | time: 6.7s
+Epoch 16 | train_loss: 0.5649 | val_loss: 0.7453 | val_acc: 0.7667 | time: 6.9s
+Epoch 17 | train_loss: 0.5255 | val_loss: 0.7452 | val_acc: 0.7548 | time: 7.0s
+Epoch 18 | train_loss: 0.5016 | val_loss: 0.8100 | val_acc: 0.7548 | time: 6.8s
+Epoch 19 | train_loss: 0.4738 | val_loss: 0.7448 | val_acc: 0.7595 | time: 6.7s
+Epoch 20 | train_loss: 0.4389 | val_loss: 0.7337 | val_acc: 0.7762 | time: 6.8s
+Epoch 21 | train_loss: 0.4019 | val_loss: 0.7609 | val_acc: 0.7619 | time: 8.1s
+Epoch 22 | train_loss: 0.3793 | val_loss: 0.7606 | val_acc: 0.7714 | time: 6.9s
+Epoch 23 | train_loss: 0.3700 | val_loss: 0.7691 | val_acc: 0.7762 | time: 7.0s
+Early stopping triggered.
+
+Running inference on test set...
+[+] Saved predictions to ../Results/results_rnn_testing_set_0.7_no_chef_id.txt
+🎯 Accuracy: 0.2111
+📊 F1-score (macro): 0.2042
+📊 F1-score (weighted): 0.2108
+
+🧩 Confusion Matrix (rows=actual, cols=predicted):
+      1533  3288  4470  5060  6357  8688
+1533    22    17    22    25     9    15
+3288    10    20    34    24    23    19
+4470    25    29    61    54    29    37
+5060    20    22    42    32    19    30
+6357    12    21    32    19    22    19
+8688    18    10    37    20    17    33
+
+📋 Classification Report:
+              precision    recall  f1-score   support
+
+        1533     0.2056    0.2000    0.2028       110
+        3288     0.1681    0.1538    0.1606       130
+        4470     0.2675    0.2596    0.2635       235
+        5060     0.1839    0.1939    0.1888       165
+        6357     0.1849    0.1760    0.1803       125
+        8688     0.2157    0.2444    0.2292       135
+
+    accuracy                         0.2111       900
+   macro avg     0.2043    0.2046    0.2042       900
+weighted avg     0.2110    0.2111    0.2108       900
+
+[+] Finished run: H=128 | E=30 | L=100 | SPLIT_RATIO=0.7
+--------------------------------------------
+🔍 Running GridSearchCV for LinearSVC...
+Fitting 5 folds for each of 36 candidates, totalling 180 fits
+✅ Best params: {'clf__C': 2.0, 'tfidf__max_df': 1.0, 'tfidf__min_df': 5, 'tfidf__ngram_range': (1, 2)}
+✅ CV macro-F1: 0.9129
+🚀 Training final model on full dataset...
+✅ Results saved to ../Results/results_linearSVC_testing_set_0.7_no_chef_id.txt
+../Datasets/Splits/training_set_0.7.csv | ../Datasets/Splits/testing_set_0.7_no_chef_id.csv | SPLIT_RATIO=0.7
+🎯 Accuracy: 0.9367
+📊 F1-score (macro): 0.9283
+📊 F1-score (weighted): 0.9365
+
+🧩 Confusion Matrix (rows=actual, cols=predicted):
+      1533  3288  4470  5060  6357  8688
+1533    92     7     3     1     1     6
+3288     6   115     3     0     0     6
+4470     1     2   231     0     0     1
+5060     0     1     0   163     0     1
+6357     1     0     6     0   115     3
+8688     4     4     0     0     0   127
+
+📋 Classification Report:
+              precision    recall  f1-score   support
+
+        1533     0.8846    0.8364    0.8598       110
+        3288     0.8915    0.8846    0.8880       130
+        4470     0.9506    0.9830    0.9665       235
+        5060     0.9939    0.9879    0.9909       165
+        6357     0.9914    0.9200    0.9544       125
+        8688     0.8819    0.9407    0.9104       135
+
+    accuracy                         0.9367       900
+   macro avg     0.9323    0.9254    0.9283       900
+weighted avg     0.9373    0.9367    0.9365       900
+
+[✅] All experiments completed!

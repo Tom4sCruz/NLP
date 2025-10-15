@@ -336,11 +336,13 @@ with torch.no_grad():
 chef_ids = label_enc.inverse_transform(all_preds)
 
 # save predictions to results.txt
-output_path = os.path.join(os.getcwd(), "results.txt")
-with open(output_path, "w", encoding="utf-8") as f:
+test_base = os.path.splitext(os.path.basename(args.test_csv))[0]
+results_name = f"../Results/results_rnn_{test_base}.txt"
+with open(results_name, "w", encoding="utf-8") as f:
+    f.write("chef_id\n")
     for cid in chef_ids:
         f.write(str(cid) + "\n")
 
-print(f"[+] Saved predictions to {output_path}")
+print(f"[+] Saved predictions to {results_name}")
 
 
