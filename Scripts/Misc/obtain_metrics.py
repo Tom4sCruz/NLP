@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import argparse
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # ----------------------------
 # Parse command-line arguments
@@ -59,6 +61,29 @@ cm = confusion_matrix(actual, predicted, labels=labels)
 
 print("\n🧩 Confusion Matrix (rows=actual, cols=predicted):")
 print(pd.DataFrame(cm, index=labels, columns=labels))
+
+# ----------------------------
+# Plot normalized confusion matrix
+# ----------------------------
+cm_normalized = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(
+    cm_normalized,
+    annot=True,
+    fmt=".2f",
+    cmap="Blues",
+    xticklabels=labels,
+    yticklabels=labels
+)
+
+plt.title("Confusion Matrix - LinearSVC (Normalized)")
+plt.xlabel("Predicted Label")
+plt.ylabel("True Label")
+
+plt.tight_layout()
+plt.savefig("confusion_matrix_svc.png", dpi=300)
+plt.show()
 
 # ----------------------------
 # Detailed per-class report
