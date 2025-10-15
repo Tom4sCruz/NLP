@@ -155,7 +155,10 @@ def collate_batch(batch):
     if labels is not None:
         labels = labels[perm_idx]
 
-    return padded, lengths, labels if labels is not None else (padded, lengths)
+    if labels is not None:
+        return padded, lengths, labels
+    else:
+        return padded, lengths
 
 # DataLoaders (use collate_fn)
 train_dataset = RecipeDataset(X_train_tok, y_train)
@@ -307,3 +310,37 @@ for epoch in range(1, EPOCHS+1):
     if val_loss < best_val_loss - 1e-6:
         best_val_loss = val_loss
         patience_cnt = 0
+    else:
+        patience_cnt += 1
+        if patience_cnt >= PATIENCE:
+            print("Early stopping triggered.")
+            break
+
+# -------------------------
+# 7) Inference on Test Set + Save Results
+# -------------------------
+print("\nRunning inference on test set...")
+model.eval()
+all_preds = []
+
+with torch.no_grad():
+    for batch in tqdm(test_loader, desc="Predicting"):
+        Xb, lengths = batch
+        Xb = Xb.to(DEVICE)
+        lengths = lengths.to(DEVICE)
+        out = model(Xb, lengths)
+        preds = torch.argmax(out, dim=1).cpu().numpy()
+        all_preds.extend(preds)
+
+# decode back to original chef IDs
+chef_ids = label_enc.inverse_transform(all_preds)
+
+# save predictions to results.txt
+output_path = os.path.join(os.getcwd(), "results.txt")
+with open(output_path, "w", encoding="utf-8") as f:
+    for cid in chef_ids:
+        f.write(str(cid) + "\n")
+
+print(f"[+] Saved predictions to {output_path}")
+
+
